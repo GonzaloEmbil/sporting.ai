@@ -119,20 +119,15 @@ nav {
     right: 5%;
     top: 50%;
     transform: translateY(-50%);
-    width: 400px;
-}
-
-#sofa-standings-embed-37-77558 {
-    height: 700px !important;
-    width: 100% !important;
+    max-width: 768px;
 }
 
 .standings-credit {
-    font-size: 10px;
+    font-size: 12px;
     font-family: Arial, sans-serif;
     text-align: left;
     color: #fff;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .standings-credit a {
