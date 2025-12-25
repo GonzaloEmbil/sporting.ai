@@ -5,124 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sporting Stats</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #000;
-            font-family: Arial, sans-serif;
-            min-height: 200vh;
-        }
-
-        header {
-            background-color: #D50032;
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav {
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-icon {
-            color: white;
-            font-size: 28px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .nav-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .tooltip {
-            position: absolute;
-            bottom: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0,0,0,0.8);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-item:hover .tooltip {
-            opacity: 1;
-        }
-
-        .dropdown {
-            position: absolute;
-            top: 50px;
-            right: 0;
-            background-color: white;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            min-width: 150px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s;
-        }
-
-        .dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 12px 20px;
-            color: #333;
-            text-decoration: none;
-            transition: background-color 0.2s;
-        }
-
-        .dropdown a:hover {
-            background-color: #f0f0f0;
-        }
-
-        .dropdown a:first-child {
-            border-radius: 4px 4px 0 0;
-        }
-
-        .dropdown a:last-child {
-            border-radius: 0 0 4px 4px;
-        }
-
-        .content {
-            margin-top: 70px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -167,31 +50,15 @@
         </nav>
     </header>
 
-    <div class="content"></div>
+    <div class="content">
+        <div class="standings-container">
+            <iframe id="sofa-standings-embed-37-77558" src="https://widgets.sofascore.com/es-ES/embed/tournament/37/season/77558/standings/LaLiga%202%2025%2F26?widgetTitle=LaLiga%202%2025%2F26&showCompetitionLogo=true" frameborder="0" scrolling="no"></iframe>
+            <div class="standings-credit">
+                Clasificación ofrecida por <a target="_blank" href="https://www.sofascore.com/es/torneo/futbol/spain/laliga-2/54#id:77558">Sofascore</a>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        const navItems = document.querySelectorAll('.nav-item');
-        
-        navItems.forEach(item => {
-            const icon = item.querySelector('.nav-icon');
-            const dropdown = item.querySelector('.dropdown');
-            
-            icon.addEventListener('click', (e) => {
-                e.stopPropagation();
-                
-                document.querySelectorAll('.dropdown').forEach(d => {
-                    if (d !== dropdown) d.classList.remove('active');
-                });
-                
-                dropdown.classList.toggle('active');
-            });
-        });
-        
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.dropdown').forEach(d => {
-                d.classList.remove('active');
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
