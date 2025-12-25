@@ -121,7 +121,7 @@ nav {
     justify-content: center;
     min-height: calc(100vh - 70px);
     padding: 40px 20px;
-    transform: scale(0.75) translate(-450px, -100px);
+    transform: scale(0.80) translate(-750px, -250px);
 }
 
 .standings-credit {
