@@ -7,7 +7,6 @@
 body {
     background-color: #000;
     font-family: Arial, sans-serif;
-    min-height: 200vh;
 }
 
 header {
@@ -122,12 +121,6 @@ nav {
     justify-content: center;
     min-height: calc(100vh - 70px);
     padding: 40px 20px;
-}
-
-#sofa-standings-embed-37-77558 {
-    height: 1203px !important;
-    max-width: 768px !important;
-    width: 100% !important;
 }
 
 .standings-credit {
