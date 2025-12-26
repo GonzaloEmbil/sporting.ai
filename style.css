@@ -139,7 +139,7 @@ nav {
     justify-content: center;
     min-height: calc(100vh - 70px);
     padding: 40px 20px;
-    transform: translate(-500px, -100px);
+    transform: translate(-500px, -75px);
     width: 100%;
 }
 
