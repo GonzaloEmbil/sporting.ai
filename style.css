@@ -212,3 +212,20 @@ nav {
     font-size: 18px;
     font-weight: bold;
 }
+
+/* Wrapper para iframes */
+.iframe-wrapper {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iframe-wrapper.active {
+    display: flex;
+}
+
+/* Estilo para botón activo */
+.team-button.active {
+    filter: brightness(1.2);
+    border-bottom: 4px solid white;
+}
