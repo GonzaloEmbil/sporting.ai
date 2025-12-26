@@ -271,9 +271,3 @@ nav {
     display: flex;
     width: 100%;
 }
-
-/* Estilo para botón activo */
-.team-button.active {
-    filter: brightness(1.2);
-    border-bottom: 4px solid white;
-}
