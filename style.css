@@ -70,44 +70,59 @@ nav {
     opacity: 1;
 }
 
-.dropdown {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    min-width: 150px;
+/* Mega menú desplegable */
+.mega-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100vw;
+    background-color: #B8002E;
+    height: 70px;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s;
+    transition: opacity 0.3s, visibility 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
-.dropdown.active {
+.nav-item:hover .mega-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
 }
 
-.dropdown a {
-    display: block;
-    padding: 12px 20px;
-    color: #333;
+.mega-menu-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    gap: 40px;
+}
+
+.mega-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     text-decoration: none;
-    transition: background-color 0.2s;
+    color: white;
+    transition: transform 0.2s;
 }
 
-.dropdown a:hover {
-    background-color: #f0f0f0;
+.mega-menu-item:hover {
+    transform: translateY(-2px);
 }
 
-.dropdown a:first-child {
-    border-radius: 4px 4px 0 0;
+.mega-menu-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
-.dropdown a:last-child {
-    border-radius: 0 0 4px 4px;
+.mega-menu-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
 }
 
 .content {
