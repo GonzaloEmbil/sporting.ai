@@ -273,7 +273,7 @@ nav {
 /* Artículo destacado */
 .featured-article-container {
     position: fixed;
-    right: 125px;
+    right: 10px;
     top: 150px;
     width: 750px;
     z-index: 998;
