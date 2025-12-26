@@ -76,7 +76,7 @@ nav {
     top: 70px;
     left: 0;
     width: 100vw;
-    background-color: #B8002E;
+    background-color: #D50032;
     height: 70px;
     opacity: 0;
     visibility: hidden;
@@ -95,8 +95,9 @@ nav {
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 0 40px;
-    gap: 40px;
+    gap: 60px;
 }
 
 .mega-menu-item {
