@@ -174,8 +174,6 @@ nav {
     padding: 20px 40px;
     z-index: 999;
     justify-content: flex-start;
-    background: linear-gradient(to bottom, rgba(245,245,245,0.95), rgba(245,245,245,0));
-    backdrop-filter: blur(5px);
 }
 
 .team-button {
@@ -211,7 +209,7 @@ nav {
 
 .team-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(213, 0, 50, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     border-color: #D50032;
     background: linear-gradient(135deg, #333333 0%, #222222 100%);
 }
