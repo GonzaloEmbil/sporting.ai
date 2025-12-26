@@ -140,6 +140,7 @@ nav {
     min-height: calc(100vh - 70px);
     padding: 40px 20px;
     transform: translate(-550px, -175px);
+    width: 100%;
 }
 
 .standings-credit {
@@ -218,10 +219,12 @@ nav {
     display: none;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .iframe-wrapper.active {
     display: flex;
+    width: 100%;
 }
 
 /* Estilo para botón activo */
