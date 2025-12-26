@@ -273,9 +273,9 @@ nav {
 /* Artículo destacado */
 .featured-article-container {
     position: fixed;
-    right: 75px;
-    top: 125px;
-    width: 500px;
+    right: 25px;
+    top: 150px;
+    width: 750px;
     z-index: 998;
 }
 
