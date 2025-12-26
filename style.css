@@ -182,14 +182,14 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 28px;
+    padding: 10px 20px;
     text-decoration: none;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-    border: 2px solid #e0e0e0;
-    border-radius: 16px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid #3a3a3a;
+    border-radius: 12px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -211,13 +211,14 @@ nav {
 
 .team-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(213, 0, 50, 0.3);
+    box-shadow: 0 6px 20px rgba(213, 0, 50, 0.4);
     border-color: #D50032;
+    background: linear-gradient(135deg, #333333 0%, #222222 100%);
 }
 
 .team-button-text {
-    color: #333333;
-    font-size: 16px;
+    color: #e0e0e0;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.3px;
     position: relative;
@@ -228,25 +229,14 @@ nav {
 .team-button.active {
     background: linear-gradient(135deg, #D50032 0%, #b8002a 100%);
     border-color: #D50032;
-    box-shadow: 0 4px 15px rgba(213, 0, 50, 0.4), 
-                0 0 0 3px rgba(213, 0, 50, 0.1);
-    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(213, 0, 50, 0.4);
+    transform: translateY(-2px) scale(1.02);
 }
 
 .team-button.active .team-button-text {
     color: white;
     font-weight: 700;
-}
-
-.team-button.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: white;
-    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Animación al hacer clic */
