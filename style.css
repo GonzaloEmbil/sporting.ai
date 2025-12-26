@@ -274,8 +274,8 @@ nav {
 .featured-article-container {
     position: fixed;
     right: 40px;
-    top: 200px;
-    width: 350px;
+    top: 160px;
+    width: 450px;
     z-index: 998;
 }
 
@@ -385,7 +385,7 @@ nav {
 @media (max-width: 1400px) {
     .featured-article-container {
         right: 20px;
-        width: 320px;
+        width: 400px;
     }
 }
 
