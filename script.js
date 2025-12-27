@@ -147,27 +147,31 @@ generateMatchCards(currentTeam);
 
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
-const icon = themeToggle.querySelector('i');
 
-// Cargar preferencia guardada
-if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-}
-
-// Event listener para cambiar el tema
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
+// Verificar que el botón existe antes de continuar
+if (themeToggle) {
+    const icon = themeToggle.querySelector('i');
     
-    // Cambiar el icono
-    if (body.classList.contains('dark-mode')) {
+    // Cargar preferencia guardada
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-mode');
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('theme', 'light');
     }
-});
+    
+    // Event listener para cambiar el tema
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        // Cambiar el icono
+        if (body.classList.contains('dark-mode')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
