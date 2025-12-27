@@ -140,3 +140,34 @@ btnJuvenilA.addEventListener('click', () => {
 
 // Inicializar el carrusel con el equipo por defecto
 generateMatchCards(currentTeam);
+
+// ============================================
+// MODO DÍA/NOCHE
+// ============================================
+
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+const icon = themeToggle.querySelector('i');
+
+// Cargar preferencia guardada
+if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+}
+
+// Event listener para cambiar el tema
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    
+    // Cambiar el icono
+    if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+    }
+});
