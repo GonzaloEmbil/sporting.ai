@@ -163,8 +163,9 @@
             <a class="twitter-timeline" 
                data-width="500" 
                data-height="600" 
-               data-theme="light" 
-               href="https://twitter.com/RealSporting?ref_src=twsrc%5Etfw">
+               data-theme="light"
+               data-chrome="noheader nofooter noborders"
+               href="https://twitter.com/RealSporting">
                Tweets by RealSporting
             </a>
         </div>
@@ -172,6 +173,14 @@
     </div>
 
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>
+        // Forzar la carga del widget de Twitter después de que la página cargue
+        window.addEventListener('load', function() {
+            if (window.twttr && window.twttr.widgets) {
+                window.twttr.widgets.load();
+            }
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
