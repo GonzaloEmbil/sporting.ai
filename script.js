@@ -47,7 +47,7 @@ const matchesData = {
 // Variables del carrusel
 let currentTeam = 'real-sporting';
 let currentIndex = 0;
-const cardsVisible = 4;
+const cardsVisible = 3;
 
 // Función para generar las tarjetas de partidos
 function generateMatchCards(team) {
