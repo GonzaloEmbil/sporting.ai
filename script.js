@@ -9,31 +9,38 @@ const iframeSportingAtletico = document.getElementById('iframe-sporting-atletico
 const iframeSportingFemenino = document.getElementById('iframe-sporting-femenino');
 const iframeJuvenilA = document.getElementById('iframe-juvenil-a');
 
-// Datos de partidos de ejemplo para cada equipo
+// Datos de imágenes de partidos para cada equipo (placeholder por ahora)
 const matchesData = {
     'real-sporting': [
-        { rival: 'Real Oviedo', competition: 'LaLiga 2', location: 'Casa', date: '05 Ene 2025', time: '18:30', logo: 'https://via.placeholder.com/50/2196F3/ffffff?text=RO' },
-        { rival: 'Racing Santander', competition: 'LaLiga 2', location: 'Fuera', date: '12 Ene 2025', time: '16:00', logo: 'https://via.placeholder.com/50/4CAF50/ffffff?text=RS' },
-        { rival: 'Levante UD', competition: 'LaLiga 2', location: 'Casa', date: '19 Ene 2025', time: '21:00', logo: 'https://via.placeholder.com/50/FF9800/ffffff?text=LV' },
-        { rival: 'Eldense', competition: 'LaLiga 2', location: 'Fuera', date: '26 Ene 2025', time: '18:30', logo: 'https://via.placeholder.com/50/9C27B0/ffffff?text=EL' },
-        { rival: 'SD Huesca', competition: 'LaLiga 2', location: 'Casa', date: '02 Feb 2025', time: '16:00', logo: 'https://via.placeholder.com/50/00BCD4/ffffff?text=HU' },
-        { rival: 'Burgos CF', competition: 'LaLiga 2', location: 'Fuera', date: '09 Feb 2025', time: '18:30', logo: 'https://via.placeholder.com/50/E91E63/ffffff?text=BU' }
+        'https://via.placeholder.com/400x225/D50032/ffffff?text=Partido+1',
+        'https://via.placeholder.com/400x225/D50032/ffffff?text=Partido+2',
+        'https://via.placeholder.com/400x225/D50032/ffffff?text=Partido+3',
+        'https://via.placeholder.com/400x225/D50032/ffffff?text=Partido+4',
+        'https://via.placeholder.com/400x225/D50032/ffffff?text=Partido+5',
+        'https://via.placeholder.com/400x225/D50032/ffffff?text=Partido+6',
+        'https://via.placeholder.com/400x225/D50032/ffffff?text=Partido+7',
+        'https://via.placeholder.com/400x225/D50032/ffffff?text=Partido+8'
     ],
     'sporting-atletico': [
-        { rival: 'CD Lealtad', competition: 'Tercera Fed.', location: 'Casa', date: '05 Ene 2025', time: '12:00', logo: 'https://via.placeholder.com/50/F44336/ffffff?text=LE' },
-        { rival: 'Covadonga', competition: 'Tercera Fed.', location: 'Fuera', date: '12 Ene 2025', time: '17:00', logo: 'https://via.placeholder.com/50/3F51B5/ffffff?text=CO' },
-        { rival: 'Marino Luanco', competition: 'Tercera Fed.', location: 'Casa', date: '19 Ene 2025', time: '12:00', logo: 'https://via.placeholder.com/50/009688/ffffff?text=ML' },
-        { rival: 'L\'Entregu', competition: 'Tercera Fed.', location: 'Fuera', date: '26 Ene 2025', time: '16:30', logo: 'https://via.placeholder.com/50/FF5722/ffffff?text=EN' }
+        'https://via.placeholder.com/400x225/2196F3/ffffff?text=Partido+1',
+        'https://via.placeholder.com/400x225/2196F3/ffffff?text=Partido+2',
+        'https://via.placeholder.com/400x225/2196F3/ffffff?text=Partido+3',
+        'https://via.placeholder.com/400x225/2196F3/ffffff?text=Partido+4',
+        'https://via.placeholder.com/400x225/2196F3/ffffff?text=Partido+5'
     ],
     'sporting-femenino': [
-        { rival: 'Avilés Stadium', competition: '2ª Fed. Fem.', location: 'Casa', date: '05 Ene 2025', time: '11:00', logo: 'https://via.placeholder.com/50/673AB7/ffffff?text=AS' },
-        { rival: 'Oviedo Moderno', competition: '2ª Fed. Fem.', location: 'Fuera', date: '12 Ene 2025', time: '16:00', logo: 'https://via.placeholder.com/50/795548/ffffff?text=OM' },
-        { rival: 'Atlético Astorga', competition: '2ª Fed. Fem.', location: 'Casa', date: '19 Ene 2025', time: '12:30', logo: 'https://via.placeholder.com/50/607D8B/ffffff?text=AA' }
+        'https://via.placeholder.com/400x225/E91E63/ffffff?text=Partido+1',
+        'https://via.placeholder.com/400x225/E91E63/ffffff?text=Partido+2',
+        'https://via.placeholder.com/400x225/E91E63/ffffff?text=Partido+3',
+        'https://via.placeholder.com/400x225/E91E63/ffffff?text=Partido+4',
+        'https://via.placeholder.com/400x225/E91E63/ffffff?text=Partido+5',
+        'https://via.placeholder.com/400x225/E91E63/ffffff?text=Partido+6'
     ],
     'juvenil-a': [
-        { rival: 'Real Oviedo Juv.', competition: 'Liga Juvenil', location: 'Casa', date: '05 Ene 2025', time: '10:00', logo: 'https://via.placeholder.com/50/2196F3/ffffff?text=RO' },
-        { rival: 'CD Lealtad Juv.', competition: 'Liga Juvenil', location: 'Fuera', date: '12 Ene 2025', time: '11:30', logo: 'https://via.placeholder.com/50/F44336/ffffff?text=LE' },
-        { rival: 'UP Langreo Juv.', competition: 'Liga Juvenil', location: 'Casa', date: '19 Ene 2025', time: '10:00', logo: 'https://via.placeholder.com/50/4CAF50/ffffff?text=UL' }
+        'https://via.placeholder.com/400x225/4CAF50/ffffff?text=Partido+1',
+        'https://via.placeholder.com/400x225/4CAF50/ffffff?text=Partido+2',
+        'https://via.placeholder.com/400x225/4CAF50/ffffff?text=Partido+3',
+        'https://via.placeholder.com/400x225/4CAF50/ffffff?text=Partido+4'
     ]
 };
 
@@ -47,20 +54,9 @@ function generateMatchCards(team) {
     const track = document.getElementById('carousel-track');
     const matches = matchesData[team];
     
-    track.innerHTML = matches.map(match => `
+    track.innerHTML = matches.map(matchImage => `
         <div class="match-card">
-            <div class="match-header">
-                <span class="match-competition">${match.competition}</span>
-                <span class="match-location">${match.location}</span>
-            </div>
-            <div class="match-rival">
-                <img src="${match.logo}" alt="${match.rival}" class="rival-logo">
-                <div class="rival-name">${match.rival}</div>
-            </div>
-            <div class="match-datetime">
-                <div class="match-date">${match.date}</div>
-                <div class="match-time">${match.time}</div>
-            </div>
+            <img src="${matchImage}" alt="Partido">
         </div>
     `).join('');
     
