@@ -459,7 +459,7 @@ nav {
 }
 
 .match-card {
-    min-width: calc((100% - 60px) / 4);
+    min-width: calc((100% - 40px) / 3);
     aspect-ratio: 16 / 9;
     border-radius: 16px;
     overflow: hidden;
