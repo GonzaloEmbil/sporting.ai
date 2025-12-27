@@ -65,6 +65,7 @@ nav {
     pointer-events: none;
     transition: opacity 0.3s;
     z-index: 1001;
+
 }
 
 .nav-item:hover .tooltip {
@@ -127,20 +128,52 @@ nav {
     color: white;
 }
 
-/* Botones de equipos */
+.content {
+    margin-top: 140px;
+}
+
+.standings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px);
+    padding: 40px 20px;
+    transform: translate(-500px, -25px);
+    width: 100%;
+}
+
+.standings-credit {
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    color: #fff;
+    margin-top: 10px;
+    max-width: 768px;
+    width: 100%;
+}
+
+.standings-credit a {
+    color: #D50032;
+    text-decoration: none;
+}
+
+.standings-credit a:hover {
+    text-decoration: underline;
+}
+
+/* Botones de equipos - Modo oscuro sin efectos extra */
 .team-buttons-container {
-    position: fixed;
+    position: absolute;
     top: 70px;
     left: 0;
     width: 100%;
     height: auto;
     display: flex;
     gap: 20px;
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
     z-index: 999;
     justify-content: flex-start;
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .team-button {
@@ -190,6 +223,7 @@ nav {
     z-index: 1;
 }
 
+/* Estilo para botón activo - SIN línea blanca ni efectos translúcidos */
 .team-button.active {
     background: linear-gradient(135deg, #D50032 0%, #b8002a 100%);
     border-color: #D50032;
@@ -203,32 +237,27 @@ nav {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Animación al hacer clic */
 .team-button:active {
     transform: translateY(0px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Contenedor principal con layout de dos columnas */
-.content {
-    margin-top: 140px;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 600px;
-    gap: 40px;
-    max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
+/* Responsive */
+@media (max-width: 768px) {
+    .team-buttons-container {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px 20px;
+    }
+    
+    .team-button {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
-/* Columna izquierda - Clasificación */
-.standings-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-}
-
+/* Wrapper para iframes */
 .iframe-wrapper {
     display: none;
     flex-direction: column;
@@ -241,16 +270,13 @@ nav {
     width: 100%;
 }
 
-/* Columna derecha - Artículo, Calendario y Twitter */
-.right-column {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
 /* Artículo destacado */
 .featured-article-container {
-    width: 100%;
+    position: absolute;
+    right: 350px;
+    top: 160px;
+    width: 600px;
+    z-index: 998;
 }
 
 .featured-article-card {
@@ -272,7 +298,7 @@ nav {
 .article-image {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 150px;
     overflow: hidden;
 }
 
@@ -355,22 +381,69 @@ nav {
     transform: translateX(5px);
 }
 
-/* Calendario */
-.calendar-section {
-    width: 100%;
+/* Responsive */
+@media (max-width: 1400px) {
+    .featured-article-container {
+        right: 20px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .featured-article-container {
+        position: static;
+        width: 100%;
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+}
+
+/* Título Calendario */
+.calendar-title-container {
+    position: absolute;
+    right: 350px;
+    top: 485px;
+    width: 600px;
+    z-index: 998;
 }
 
 .calendar-title {
     color: #000000;
     font-size: 28px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin: 0;
+    padding: 20px 0;
 }
 
+/* Responsive */
+@media (max-width: 1400px) {
+    .calendar-title-container {
+        right: 20px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .calendar-title-container {
+        position: static;
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+}
+
+/* Carrusel de próximos partidos */
 .calendar-carousel-container {
+    position: absolute;
+    right: 20px;
+    top: 550px;
+    width: calc(100% - 600px);
+    z-index: 998;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .calendar-carousel {
@@ -381,18 +454,19 @@ nav {
 
 .carousel-track {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .match-card {
-    min-width: calc((100% - 30px) / 3);
+    min-width: calc((100% - 40px) / 3);
     aspect-ratio: 16 / 9;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     cursor: pointer;
+    position: relative;
     border: 1px solid #000000;
 }
 
@@ -448,62 +522,43 @@ nav {
     }
 }
 
-/* Twitter */
-.twitter-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: #f8f8f8;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
 /* Responsive */
 @media (max-width: 1400px) {
-    .content {
-        grid-template-columns: 1fr 500px;
-        gap: 30px;
+    .calendar-carousel-container {
+        width: calc(100% - 450px);
     }
     
     .match-card {
-        min-width: calc((100% - 15px) / 2);
+        min-width: calc((100% - 40px) / 3);
     }
 }
 
 @media (max-width: 1200px) {
-    .content {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-    
-    .right-column {
-        max-width: 600px;
-        margin: 0 auto;
+    .calendar-carousel-container {
+        position: static;
         width: 100%;
-    }
-    
-    .team-buttons-container {
-        flex-wrap: wrap;
-    }
-}
-
-@media (max-width: 768px) {
-    .team-buttons-container {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .team-button {
-        width: 100%;
-        justify-content: center;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 20px;
     }
     
     .match-card {
-        min-width: 100%;
+        min-width: calc((100% - 20px) / 2);
     }
-    
-    .calendar-carousel-container {
-        gap: 10px;
-    }
+}
+
+/* Contenedor de Twitter - Posicionado debajo de los iframes */
+.twitter-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* Asegurar que el iframe de Twitter respete el ancho */
+.twitter-container iframe {
+    width: 500px !important;
+    max-width: 500px !important;
 }
