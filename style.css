@@ -398,3 +398,38 @@ nav {
         padding: 0 20px;
     }
 }
+
+/* Título Calendario */
+.calendar-title-container {
+    position: absolute;
+    right: 350px;
+    top: 480px;
+    width: 600px;
+    z-index: 998;
+}
+
+.calendar-title {
+    color: #000000;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    padding: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .calendar-title-container {
+        right: 20px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .calendar-title-container {
+        position: static;
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+}
