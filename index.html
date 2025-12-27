@@ -97,45 +97,8 @@
         </a>
     </div>
 
-    <!-- Artículo destacado FUERA del contenedor de iframes -->
-    <div class="featured-article-container">
-        <a href="#" class="featured-article-card">
-            <div class="article-image">
-                <img src="https://via.placeholder.com/400x250/D50032/ffffff?text=Artículo+Destacado" alt="Artículo destacado">
-                <div class="article-badge">DESTACADO</div>
-            </div>
-            <div class="article-content">
-                <h3 class="article-title">El Sporting continúa su racha invicta en El Molinón</h3>
-                <p class="article-excerpt">El equipo rojiblanco sumó tres puntos más en casa ante un rival directo en la lucha por el ascenso. Gran actuación del equipo que mantiene vivas las opciones de playoff...</p>
-                <div class="article-footer">
-                    <span class="article-date">26 Dic 2024</span>
-                    <span class="article-read-more">Leer más →</span>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <!-- Título Calendario -->
-    <div class="calendar-title-container">
-        <h2 class="calendar-title">Calendario</h2>
-    </div>
-
-    <!-- Carrusel de próximos partidos -->
-    <div class="calendar-carousel-container">
-        <button class="carousel-arrow carousel-arrow-left" id="carousel-prev">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="calendar-carousel">
-            <div class="carousel-track" id="carousel-track">
-                <!-- Los partidos se generarán aquí dinámicamente -->
-            </div>
-        </div>
-        <button class="carousel-arrow carousel-arrow-right" id="carousel-next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
-
     <div class="content">
+        <!-- Columna izquierda: Clasificaciones -->
         <div class="standings-container">
             <!-- Real Sporting de Gijón -->
             <div id="iframe-real-sporting" class="iframe-wrapper active">
@@ -156,21 +119,60 @@
             <div id="iframe-juvenil-a" class="iframe-wrapper">
                 <iframe id="sofa-standings-embed-40351-81098-juvenil" src="https://widgets.sofascore.com/es-ES/embed/tournament/42912/season/80633/standings/Group%201?widgetTitle=Group%201&showCompetitionLogo=true" style="height:975px!important;max-width:500px!important;width:100%!important;" frameborder="0" scrolling="no"></iframe>
             </div>
-    </div>
-        
-        <!-- Timeline de Twitter -->
-        <div class="twitter-container">
-            <a class="twitter-timeline" 
-               data-width="500" 
-               data-height="600" 
-               data-theme="light" 
-               href="https://twitter.com/RealSporting?ref_src=twsrc%5Etfw">
-               Tweets by RealSporting
-            </a>
         </div>
-        
+
+        <!-- Columna derecha: Artículo, Calendario y Twitter -->
+        <div class="right-column">
+            <!-- Artículo destacado -->
+            <div class="featured-article-container">
+                <a href="#" class="featured-article-card">
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/600x200/D50032/ffffff?text=Artículo+Destacado" alt="Artículo destacado">
+                        <div class="article-badge">DESTACADO</div>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">El Sporting continúa su racha invicta en El Molinón</h3>
+                        <p class="article-excerpt">El equipo rojiblanco sumó tres puntos más en casa ante un rival directo en la lucha por el ascenso. Gran actuación del equipo que mantiene vivas las opciones de playoff...</p>
+                        <div class="article-footer">
+                            <span class="article-date">26 Dic 2024</span>
+                            <span class="article-read-more">Leer más →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Calendario -->
+            <div class="calendar-section">
+                <h2 class="calendar-title">Calendario</h2>
+                <div class="calendar-carousel-container">
+                    <button class="carousel-arrow carousel-arrow-left" id="carousel-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="calendar-carousel">
+                        <div class="carousel-track" id="carousel-track">
+                            <!-- Los partidos se generarán aquí dinámicamente -->
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-right" id="carousel-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Timeline de Twitter -->
+            <div class="twitter-container">
+                <a class="twitter-timeline" 
+                   data-width="100%" 
+                   data-height="600" 
+                   data-theme="light" 
+                   href="https://twitter.com/RealSporting?ref_src=twsrc%5Etfw">
+                   Tweets by RealSporting
+                </a>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
+</html>
