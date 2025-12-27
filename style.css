@@ -437,122 +437,63 @@ nav {
 /* Carrusel de próximos partidos */
 .calendar-carousel-container {
     position: absolute;
-    right: 350px;
+    right: 20px;
     top: 560px;
-    width: 600px;
+    width: calc(100% - 600px);
     z-index: 998;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .calendar-carousel {
     flex: 1;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 16px;
 }
 
 .carousel-track {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .match-card {
-    min-width: calc((100% - 45px) / 4);
-    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-width: calc((100% - 60px) / 4);
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     cursor: pointer;
+    position: relative;
 }
 
 .match-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(213, 0, 50, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(213, 0, 50, 0.3);
 }
 
-.match-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #e0e0e0;
-}
-
-.match-competition {
-    font-size: 10px;
-    font-weight: 700;
-    color: #D50032;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.match-location {
-    font-size: 10px;
-    font-weight: 600;
-    color: #666;
-    background: #f0f0f0;
-    padding: 3px 8px;
-    border-radius: 10px;
-}
-
-.match-rival {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.rival-logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.match-card img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 2px solid #e0e0e0;
-}
-
-.rival-name {
-    font-size: 13px;
-    font-weight: 700;
-    color: #1a1a1a;
-    text-align: center;
-}
-
-.match-datetime {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.match-date {
-    font-size: 11px;
-    font-weight: 600;
-    color: #333;
-}
-
-.match-time {
-    font-size: 11px;
-    font-weight: 500;
-    color: #666;
 }
 
 .carousel-arrow {
     background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
     border: 2px solid #3a3a3a;
     color: #e0e0e0;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 16px;
+    font-size: 20px;
+    flex-shrink: 0;
 }
 
 .carousel-arrow:hover {
@@ -570,12 +511,11 @@ nav {
 /* Responsive */
 @media (max-width: 1400px) {
     .calendar-carousel-container {
-        right: 20px;
-        width: 400px;
+        width: calc(100% - 450px);
     }
     
     .match-card {
-        min-width: calc((100% - 30px) / 3);
+        min-width: calc((100% - 40px) / 3);
     }
 }
 
@@ -583,12 +523,12 @@ nav {
     .calendar-carousel-container {
         position: static;
         width: 100%;
-        max-width: 500px;
+        max-width: 800px;
         margin: 20px auto;
         padding: 0 20px;
     }
     
     .match-card {
-        min-width: calc((100% - 15px) / 2);
+        min-width: calc((100% - 20px) / 2);
     }
 }
