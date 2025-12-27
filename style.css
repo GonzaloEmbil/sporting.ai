@@ -164,7 +164,7 @@ nav {
 
 /* Botones de equipos - Modo oscuro sin efectos extra */
 .team-buttons-container {
-    position: fixed;
+    position: absolute;
     top: 70px;
     left: 0;
     width: 100%;
