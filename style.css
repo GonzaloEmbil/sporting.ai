@@ -549,16 +549,8 @@ nav {
 
 /* Contenedor de Twitter - Posicionado debajo de los iframes */
 .twitter-container {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-}
-
-/* Asegurar que el iframe de Twitter respete el ancho */
-.twitter-container iframe {
-    width: 500px !important;
-    max-width: 500px !important;
+    width: 500px;
+    margin: 30px auto 40px auto;
+    display: block;
+    transform: translate(-500px, 0);
 }
