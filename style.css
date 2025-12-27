@@ -546,3 +546,12 @@ nav {
         min-width: calc((100% - 20px) / 2);
     }
 }
+
+/* Contenedor de Twitter */
+.twitter-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto 40px auto;
+    display: flex;
+    justify-content: center;
+}
