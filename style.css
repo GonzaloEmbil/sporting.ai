@@ -467,6 +467,7 @@ nav {
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
+    border: 3px solid #D50032;
 }
 
 .match-card:hover {
