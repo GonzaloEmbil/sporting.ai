@@ -1,0 +1,557 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFFFFF;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #D50032;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-icon {
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.nav-icon:hover {
+    transform: scale(1.1);
+}
+
+.tooltip {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1001;
+
+}
+
+.nav-item:hover .tooltip {
+    opacity: 1;
+}
+
+/* Mega menú desplegable */
+.mega-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100vw;
+    background-color: #D50032;
+    height: 70px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.nav-item:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mega-menu-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    gap: 100px;
+}
+
+.mega-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.mega-menu-item:hover {
+    transform: translateY(-2px);
+}
+
+.mega-menu-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.mega-menu-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.content {
+    margin-top: 140px;
+}
+
+.standings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px);
+    padding: 40px 20px;
+    transform: translate(-500px, -25px);
+    width: 100%;
+}
+
+.standings-credit {
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    color: #fff;
+    margin-top: 10px;
+    max-width: 768px;
+    width: 100%;
+}
+
+.standings-credit a {
+    color: #D50032;
+    text-decoration: none;
+}
+
+.standings-credit a:hover {
+    text-decoration: underline;
+}
+
+/* Botones de equipos - Modo oscuro sin efectos extra */
+.team-buttons-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 20px;
+    padding: 20px 20px 20px 20px;
+    z-index: 999;
+    justify-content: flex-start;
+}
+
+.team-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid #3a3a3a;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.team-button:hover::before {
+    left: 100%;
+}
+
+.team-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border-color: #D50032;
+    background: linear-gradient(135deg, #333333 0%, #222222 100%);
+}
+
+.team-button-text {
+    color: #e0e0e0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilo para botón activo - SIN línea blanca ni efectos translúcidos */
+.team-button.active {
+    background: linear-gradient(135deg, #D50032 0%, #b8002a 100%);
+    border-color: #D50032;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.team-button.active .team-button-text {
+    color: white;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Animación al hacer clic */
+.team-button:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-buttons-container {
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px 20px;
+    }
+    
+    .team-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Wrapper para iframes */
+.iframe-wrapper {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.iframe-wrapper.active {
+    display: flex;
+    width: 100%;
+}
+
+/* Artículo destacado */
+.featured-article-container {
+    position: absolute;
+    right: 350px;
+    top: 160px;
+    width: 600px;
+    z-index: 998;
+}
+
+.featured-article-card {
+    display: block;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.featured-article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(213, 0, 50, 0.2);
+}
+
+.article-image {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.featured-article-card:hover .article-image img {
+    transform: scale(1.1);
+}
+
+.article-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #D50032 0%, #b8002a 100%);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(213, 0, 50, 0.4);
+}
+
+.article-content {
+    padding: 24px;
+}
+
+.article-title {
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.featured-article-card:hover .article-title {
+    color: #D50032;
+}
+
+.article-excerpt {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.article-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.article-date {
+    color: #999;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.article-read-more {
+    color: #D50032;
+    font-size: 13px;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.featured-article-card:hover .article-read-more {
+    transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .featured-article-container {
+        right: 20px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .featured-article-container {
+        position: static;
+        width: 100%;
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+}
+
+/* Título Calendario */
+.calendar-title-container {
+    position: absolute;
+    right: 350px;
+    top: 485px;
+    width: 600px;
+    z-index: 998;
+}
+
+.calendar-title {
+    color: #000000;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    padding: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .calendar-title-container {
+        right: 20px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .calendar-title-container {
+        position: static;
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+}
+
+/* Carrusel de próximos partidos */
+.calendar-carousel-container {
+    position: absolute;
+    right: 20px;
+    top: 550px;
+    width: calc(100% - 600px);
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.calendar-carousel {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.match-card {
+    min-width: calc((100% - 40px) / 3);
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #000000;
+}
+
+.match-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(213, 0, 50, 0.3);
+}
+
+.match-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-arrow {
+    background: transparent;
+    border: none;
+    color: #D50032;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 40px;
+    flex-shrink: 0;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.carousel-arrow:hover {
+    color: #b8002a;
+    transform: scale(1.3);
+}
+
+.carousel-arrow:active {
+    transform: scale(1.1);
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+    pointer-events: none;
+    animation: none;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .calendar-carousel-container {
+        width: calc(100% - 450px);
+    }
+    
+    .match-card {
+        min-width: calc((100% - 40px) / 3);
+    }
+}
+
+@media (max-width: 1200px) {
+    .calendar-carousel-container {
+        position: static;
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+    
+    .match-card {
+        min-width: calc((100% - 20px) / 2);
+    }
+}
+
+/* Contenedor de Twitter */
+.twitter-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto 40px auto;
+    display: flex;
+    justify-content: center;
+}
