@@ -11,7 +11,7 @@ body {
 
 header {
     background-color: #ed1d23;
-    height: 70px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +30,7 @@ header {
 }
 
 .logo img {
-    height: 70px;
+    height: 60px;
     width: auto;
     cursor: pointer;
 }
@@ -80,11 +80,11 @@ nav {
 /* Mega menú desplegable */
 .mega-menu {
     position: fixed;
-    top: 70px;
+    top: 60px;
     left: 0;
     width: 100vw;
     background-color: #D50032;
-    height: 70px;
+    height: 60px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
