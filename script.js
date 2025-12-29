@@ -167,3 +167,14 @@ themeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'light');
     }
 });
+
+// Forzar carga del widget de Twitter
+if (window.twttr) {
+    window.twttr.widgets.load();
+} else {
+    window.addEventListener('load', () => {
+        if (window.twttr) {
+            window.twttr.widgets.load();
+        }
+    });
+}
