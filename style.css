@@ -11,7 +11,7 @@ body {
 
 header {
     background-color: #ed1d23;
-    height: 60px;
+    height: 65px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -80,11 +80,11 @@ nav {
 /* Mega menú desplegable */
 .mega-menu {
     position: fixed;
-    top: 60px;
+    top: 65px;
     left: 0;
     width: 100vw;
     background-color: #D50032;
-    height: 60px;
+    height: 65px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
