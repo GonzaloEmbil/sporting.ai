@@ -24,11 +24,16 @@ header {
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-<div class="logo">
-    <a href="index.html">
-        <img src="assets/logo.png" alt="Logo Sporting Stats">
-    </a>
-</div>
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    cursor: pointer;
+}
 
 nav {
     display: flex;
