@@ -169,8 +169,8 @@ nav {
 
 /* Menú desplegable de equipos */
 .team-dropdown-container {
-    position: fixed;
-    top: 65px;
+    position: absolute;
+    top: 60px;
     left: 20px;
     z-index: 999;
     padding: 20px 0;
