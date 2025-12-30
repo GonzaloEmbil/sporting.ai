@@ -1,15 +1,10 @@
-// Obtener referencias a los botones y los iframes
-const btnRealSporting = document.getElementById('btn-real-sporting');
-const btnSportingAtletico = document.getElementById('btn-sporting-atletico');
-const btnSportingFemenino = document.getElementById('btn-sporting-femenino');
-const btnJuvenilA = document.getElementById('btn-juvenil-a');
-
+// Referencias a los iframes
 const iframeRealSporting = document.getElementById('iframe-real-sporting');
 const iframeSportingAtletico = document.getElementById('iframe-sporting-atletico');
 const iframeSportingFemenino = document.getElementById('iframe-sporting-femenino');
 const iframeJuvenilA = document.getElementById('iframe-juvenil-a');
 
-// Datos de imágenes de partidos para cada equipo (placeholder por ahora)
+// Datos de imágenes de partidos para cada equipo
 const matchesData = {
     'real-sporting': [
         'https://via.placeholder.com/400x225/D50032/ffffff?text=Partido+1',
@@ -75,12 +70,11 @@ function updateCarousel() {
     const translateX = -(currentIndex * cardWidth);
     track.style.transform = `translateX(${translateX}%)`;
     
-    // Deshabilitar botones en los extremos
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex >= matches.length - cardsVisible;
 }
 
-// Event listeners para las flechas
+// Event listeners para las flechas del carrusel
 document.getElementById('carousel-prev').addEventListener('click', () => {
     if (currentIndex > 0) {
         currentIndex--;
@@ -96,46 +90,73 @@ document.getElementById('carousel-next').addEventListener('click', () => {
     }
 });
 
-// Función para cambiar iframe y calendario
-function showIframe(iframeToShow, buttonToActivate, teamId) {
+// Función para cambiar equipo
+function changeTeam(teamId, teamName) {
     // Ocultar todos los iframes
     iframeRealSporting.classList.remove('active');
     iframeSportingAtletico.classList.remove('active');
     iframeSportingFemenino.classList.remove('active');
     iframeJuvenilA.classList.remove('active');
     
-    // Desactivar todos los botones
-    btnRealSporting.classList.remove('active');
-    btnSportingAtletico.classList.remove('active');
-    btnSportingFemenino.classList.remove('active');
-    btnJuvenilA.classList.remove('active');
+    // Mostrar el iframe correspondiente
+    const iframes = {
+        'real-sporting': iframeRealSporting,
+        'sporting-atletico': iframeSportingAtletico,
+        'sporting-femenino': iframeSportingFemenino,
+        'juvenil-a': iframeJuvenilA
+    };
     
-    // Mostrar el iframe seleccionado
-    iframeToShow.classList.add('active');
+    iframes[teamId].classList.add('active');
     
-    // Activar el botón seleccionado
-    buttonToActivate.classList.add('active');
+    // Actualizar texto del dropdown
+    document.getElementById('dropdown-text').textContent = teamName;
     
-    // Actualizar el carrusel de partidos
+    // Actualizar carrusel
     currentTeam = teamId;
     generateMatchCards(teamId);
 }
 
-// Event listeners actualizados
-btnRealSporting.addEventListener('click', () => {
-    showIframe(iframeRealSporting, btnRealSporting, 'real-sporting');
+// Dropdown functionality
+const dropdownToggle = document.getElementById('dropdown-toggle');
+const dropdownMenu = document.getElementById('dropdown-menu');
+const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+// Toggle dropdown
+dropdownToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownToggle.classList.toggle('active');
+    dropdownMenu.classList.toggle('active');
 });
 
-btnSportingAtletico.addEventListener('click', () => {
-    showIframe(iframeSportingAtletico, btnSportingAtletico, 'sporting-atletico');
+// Cerrar dropdown al hacer clic fuera
+document.addEventListener('click', () => {
+    dropdownToggle.classList.remove('active');
+    dropdownMenu.classList.remove('active');
 });
 
-btnSportingFemenino.addEventListener('click', () => {
-    showIframe(iframeSportingFemenino, btnSportingFemenino, 'sporting-femenino');
+// Prevenir que el click en el menú lo cierre
+dropdownMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
 });
 
-btnJuvenilA.addEventListener('click', () => {
-    showIframe(iframeJuvenilA, btnJuvenilA, 'juvenil-a');
+// Event listeners para items del dropdown
+dropdownItems.forEach(item => {
+    item.addEventListener('click', () => {
+        // Remover active de todos los items
+        dropdownItems.forEach(i => i.classList.remove('active'));
+        
+        // Añadir active al item seleccionado
+        item.classList.add('active');
+        
+        // Cambiar equipo
+        const teamId = item.getAttribute('data-team');
+        const teamName = item.querySelector('span').textContent;
+        changeTeam(teamId, teamName);
+        
+        // Cerrar dropdown
+        dropdownToggle.classList.remove('active');
+        dropdownMenu.classList.remove('active');
+    });
 });
 
 // Inicializar el carrusel con el equipo por defecto
