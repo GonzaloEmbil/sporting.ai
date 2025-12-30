@@ -876,20 +876,19 @@ body.dark-mode .match-card:hover {
     border-radius: 6px;
 }
 
-/* Responsive para móvil */
+/* Responsive para móvil - SOLO afecta en pantallas pequeñas */
 @media (max-width: 768px) {
-    header {
-        padding: 0 20px;
-        justify-content: space-between;
-    }
-    
     .hamburger-menu {
         display: flex;
-        order: 1;
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     
     .logo {
-        order: 2;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -899,12 +898,12 @@ body.dark-mode .match-card:hover {
         height: 55px;
     }
     
-    nav {
-        display: none;
+    /* Ocultar navegación desktop en móvil */
+    header > nav {
+        display: none !important;
     }
     
     .theme-toggle {
-        order: 3;
         width: 40px;
         height: 40px;
         font-size: 18px;
