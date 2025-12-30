@@ -188,3 +188,35 @@ themeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'light');
     }
 });
+
+// Menú hamburguesa móvil
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const mobileNav = document.getElementById('mobile-nav');
+const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+// Toggle menú
+hamburgerMenu.addEventListener('click', () => {
+    hamburgerMenu.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+    mobileNavOverlay.classList.toggle('active');
+    document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+});
+
+// Cerrar menú al hacer clic en overlay
+mobileNavOverlay.addEventListener('click', () => {
+    hamburgerMenu.classList.remove('active');
+    mobileNav.classList.remove('active');
+    mobileNavOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+// Toggle submenús
+mobileNavItems.forEach(item => {
+    const title = item.querySelector('.mobile-nav-title');
+    if (title) {
+        title.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    }
+});
