@@ -144,7 +144,7 @@ nav {
     justify-content: center;
     min-height: calc(100vh - 70px);
     padding: 40px 20px;
-    transform: translate(-500px, -30px);
+    transform: translate(-500px, -35px);
     width: 100%;
 }
 
@@ -330,7 +330,7 @@ body.dark-mode .dropdown-item.active span {
 .featured-article-container {
     position: absolute;
     right: 350px;
-    top: 150px;
+    top: 155px;
     width: 600px;
     z-index: 998;
 }
