@@ -90,19 +90,28 @@
         </button>
     </header>
 
-    <div class="team-buttons-container">
-        <a href="javascript:void(0)" id="btn-real-sporting" class="team-button team-button-1 active">
-            <span class="team-button-text">Sporting de Gijón</span>
-        </a>
-        <a href="javascript:void(0)" id="btn-sporting-atletico" class="team-button team-button-2">
-            <span class="team-button-text">Sporting Atlético</span>
-        </a>
-        <a href="javascript:void(0)" id="btn-sporting-femenino" class="team-button team-button-3">
-            <span class="team-button-text">Sporting Femenino</span>
-        </a>
-        <a href="javascript:void(0)" id="btn-juvenil-a" class="team-button team-button-4">
-            <span class="team-button-text">Juvenil A</span>
-        </a>
+    <!-- Menú desplegable de equipos -->
+    <div class="team-dropdown-container">
+        <div class="team-dropdown">
+            <button class="dropdown-toggle" id="dropdown-toggle">
+                <span class="dropdown-text" id="dropdown-text">Sporting de Gijón</span>
+                <i class="fas fa-chevron-down dropdown-icon"></i>
+            </button>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <div class="dropdown-item active" data-team="real-sporting">
+                    <span>Sporting de Gijón</span>
+                </div>
+                <div class="dropdown-item" data-team="sporting-atletico">
+                    <span>Sporting Atlético</span>
+                </div>
+                <div class="dropdown-item" data-team="sporting-femenino">
+                    <span>Sporting Femenino</span>
+                </div>
+                <div class="dropdown-item" data-team="juvenil-a">
+                    <span>Juvenil A</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Artículo destacado FUERA del contenedor de iframes -->
