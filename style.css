@@ -685,3 +685,72 @@ body.dark-mode .match-card:hover {
 .theme-icon {
     transition: transform 0.3s ease;
 }
+
+/* Footer */
+.site-footer {
+    background-color: #ed1d23;
+    color: white;
+    padding: 25px 40px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-left {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.footer-center {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-center a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+
+.footer-center a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.footer-right {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-right a {
+    color: white;
+    font-size: 18px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.footer-right a:hover {
+    transform: scale(1.2);
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-center {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
