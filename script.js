@@ -221,86 +221,117 @@ mobileNavItems.forEach(item => {
     }
 });
 
-// Carrusel táctil para móvil
+// Carrusel táctil fluido para móvil
 const carousel = document.querySelector('.calendar-carousel');
 const carouselTrack = document.getElementById('carousel-track');
 
 // Solo activar en móvil
 if (window.innerWidth <= 768) {
     let isDragging = false;
-    let startPos = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
-    let animationID = 0;
+    let startX = 0;
+    let scrollLeft = 0;
+    let velocity = 0;
+    let lastX = 0;
+    let lastTime = 0;
     
     // Touch events
-    carousel.addEventListener('touchstart', touchStart);
-    carousel.addEventListener('touchend', touchEnd);
-    carousel.addEventListener('touchmove', touchMove);
+    carousel.addEventListener('touchstart', dragStart, { passive: false });
+    carousel.addEventListener('touchend', dragEnd);
+    carousel.addEventListener('touchmove', dragMove, { passive: false });
     
-    // Mouse events (para testing en desktop)
-    carousel.addEventListener('mousedown', touchStart);
-    carousel.addEventListener('mouseup', touchEnd);
-    carousel.addEventListener('mouseleave', touchEnd);
-    carousel.addEventListener('mousemove', touchMove);
+    // Mouse events (para testing)
+    carousel.addEventListener('mousedown', dragStart);
+    carousel.addEventListener('mouseup', dragEnd);
+    carousel.addEventListener('mouseleave', dragEnd);
+    carousel.addEventListener('mousemove', dragMove);
     
-    function touchStart(event) {
+    function dragStart(e) {
         isDragging = true;
-        startPos = getPositionX(event);
-        animationID = requestAnimationFrame(animation);
         carousel.style.cursor = 'grabbing';
+        carousel.style.scrollBehavior = 'auto';
+        
+        startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        scrollLeft = carousel.scrollLeft;
+        lastX = startX;
+        lastTime = Date.now();
+        velocity = 0;
+        
+        // Prevenir selección de texto
+        e.preventDefault();
     }
     
-    function touchEnd() {
+    function dragMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        
+        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        const currentTime = Date.now();
+        
+        // Calcular velocidad para el momentum
+        const timeDelta = currentTime - lastTime;
+        if (timeDelta > 0) {
+            velocity = (x - lastX) / timeDelta;
+        }
+        
+        lastX = x;
+        lastTime = currentTime;
+        
+        // Scroll fluido
+        const walk = (startX - x);
+        carousel.scrollLeft = scrollLeft + walk;
+    }
+    
+    function dragEnd() {
+        if (!isDragging) return;
         isDragging = false;
-        cancelAnimationFrame(animationID);
-        
-        const movedBy = currentTranslate - prevTranslate;
-        
-        // Si se movió lo suficiente, pasar a la siguiente/anterior tarjeta
-        if (movedBy < -50 && currentIndex < matchesData[currentTeam].length - 1) {
-            currentIndex += 1;
-        }
-        
-        if (movedBy > 50 && currentIndex > 0) {
-            currentIndex -= 1;
-        }
-        
-        setPositionByIndex();
         carousel.style.cursor = 'grab';
+        
+        // Aplicar momentum (inercia)
+        applyMomentum();
     }
     
-    function touchMove(event) {
-        if (isDragging) {
-            const currentPosition = getPositionX(event);
-            currentTranslate = prevTranslate + currentPosition - startPos;
+    function applyMomentum() {
+        const momentumStrength = 15; // Ajustar para más/menos inercia
+        let currentVelocity = velocity * momentumStrength;
+        
+        function momentumStep() {
+            if (Math.abs(currentVelocity) > 0.5) {
+                carousel.scrollLeft -= currentVelocity;
+                currentVelocity *= 0.95; // Friction
+                requestAnimationFrame(momentumStep);
+            } else {
+                // Snap suave a la tarjeta más cercana
+                snapToClosest();
+            }
+        }
+        
+        if (Math.abs(currentVelocity) > 1) {
+            momentumStep();
+        } else {
+            snapToClosest();
         }
     }
     
-    function getPositionX(event) {
-        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    function snapToClosest() {
+        carousel.style.scrollBehavior = 'smooth';
+        
+        const cardWidth = carousel.offsetWidth * 0.7 + 15; // ancho + gap
+        const scrollPosition = carousel.scrollLeft;
+        const closestIndex = Math.round(scrollPosition / cardWidth);
+        
+        carousel.scrollLeft = closestIndex * cardWidth;
+        
+        // Resetear después de snap
+        setTimeout(() => {
+            carousel.style.scrollBehavior = 'auto';
+        }, 300);
     }
     
-    function animation() {
-        setSliderPosition();
-        if (isDragging) requestAnimationFrame(animation);
-    }
-    
-    function setSliderPosition() {
-        carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
-    }
-    
-    function setPositionByIndex() {
-        const cardWidth = carousel.offsetWidth * 0.7; // 70vw
-        currentTranslate = currentIndex * -(cardWidth + 15); // +15 por el gap
-        prevTranslate = currentTranslate;
-        setSliderPosition();
-    }
-    
-    // Reajustar en resize
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 768) {
-            setPositionByIndex();
+    // Prevenir clicks accidentales durante drag
+    carousel.addEventListener('click', (e) => {
+        if (Math.abs(velocity) > 0.1) {
+            e.preventDefault();
+            e.stopPropagation();
         }
-    });
+    }, true);
 }
