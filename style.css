@@ -909,3 +909,54 @@ body.dark-mode .match-card:hover {
         font-size: 18px;
     }
 }
+
+/* Carrusel responsive para móvil */
+@media (max-width: 768px) {
+    .calendar-carousel-container {
+        position: static;
+        width: 100%;
+        margin: 20px auto;
+        padding: 0 10px;
+        gap: 0;
+    }
+    
+    /* Ocultar flechas en móvil */
+    .carousel-arrow {
+        display: none;
+    }
+    
+    .calendar-carousel {
+        width: 100%;
+        touch-action: pan-y;
+        cursor: grab;
+    }
+    
+    .calendar-carousel:active {
+        cursor: grabbing;
+    }
+    
+    .carousel-track {
+        gap: 15px;
+        padding: 0 10px;
+    }
+    
+    /* Tarjetas más grandes en móvil - mostrar 1.5 tarjetas */
+    .match-card {
+        min-width: calc(70vw - 20px);
+        flex-shrink: 0;
+    }
+    
+    /* Scroll suave en móvil */
+    .calendar-carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+    
+    .calendar-carousel::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+}
