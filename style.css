@@ -6,12 +6,17 @@
 
 body {
     background-color: #FFFFFF;
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: 'Saira', Arial, sans-serif;
 }
 
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/* Tipografía de títulos */
+h1, h2, h3,
+.article-title,
+.calendar-title,
+.mega-menu-title {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 400;
 }
 
 header {
