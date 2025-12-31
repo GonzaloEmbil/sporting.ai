@@ -291,7 +291,7 @@ if (window.innerWidth <= 768) {
     }
     
     function applyMomentum() {
-        const momentumStrength = 15; // Ajustar para más/menos inercia
+        const momentumStrength = 25; // Ajustar para más/menos inercia
         let currentVelocity = velocity * momentumStrength;
         
         function momentumStep() {
