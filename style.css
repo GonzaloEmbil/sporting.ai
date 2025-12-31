@@ -9,6 +9,11 @@ body {
     font-family: 'Inter', Arial, sans-serif;
 }
 
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 header {
     background-color: #ed1d23;
     height: 65px;
