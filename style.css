@@ -603,14 +603,6 @@ body.dark-mode .dropdown-item.active span {
     }
 }
 
-/* Contenedor de Twitter */
-.twitter-container {
-    width: 100%;
-    max-width: 500px;
-    margin: 30px auto 40px auto;
-    display: flex;
-    justify-content: center;
-}
 
 /* Botón de modo noche */
 .theme-toggle {
