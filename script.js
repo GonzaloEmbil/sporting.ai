@@ -220,3 +220,87 @@ mobileNavItems.forEach(item => {
         });
     }
 });
+
+// Carrusel táctil para móvil
+const carousel = document.querySelector('.calendar-carousel');
+const carouselTrack = document.getElementById('carousel-track');
+
+// Solo activar en móvil
+if (window.innerWidth <= 768) {
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
+    
+    // Touch events
+    carousel.addEventListener('touchstart', touchStart);
+    carousel.addEventListener('touchend', touchEnd);
+    carousel.addEventListener('touchmove', touchMove);
+    
+    // Mouse events (para testing en desktop)
+    carousel.addEventListener('mousedown', touchStart);
+    carousel.addEventListener('mouseup', touchEnd);
+    carousel.addEventListener('mouseleave', touchEnd);
+    carousel.addEventListener('mousemove', touchMove);
+    
+    function touchStart(event) {
+        isDragging = true;
+        startPos = getPositionX(event);
+        animationID = requestAnimationFrame(animation);
+        carousel.style.cursor = 'grabbing';
+    }
+    
+    function touchEnd() {
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+        
+        const movedBy = currentTranslate - prevTranslate;
+        
+        // Si se movió lo suficiente, pasar a la siguiente/anterior tarjeta
+        if (movedBy < -50 && currentIndex < matchesData[currentTeam].length - 1) {
+            currentIndex += 1;
+        }
+        
+        if (movedBy > 50 && currentIndex > 0) {
+            currentIndex -= 1;
+        }
+        
+        setPositionByIndex();
+        carousel.style.cursor = 'grab';
+    }
+    
+    function touchMove(event) {
+        if (isDragging) {
+            const currentPosition = getPositionX(event);
+            currentTranslate = prevTranslate + currentPosition - startPos;
+        }
+    }
+    
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+    
+    function animation() {
+        setSliderPosition();
+        if (isDragging) requestAnimationFrame(animation);
+    }
+    
+    function setSliderPosition() {
+        carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
+    }
+    
+    function setPositionByIndex() {
+        const cardWidth = carousel.offsetWidth * 0.7; // 70vw
+        currentTranslate = currentIndex * -(cardWidth + 15); // +15 por el gap
+        prevTranslate = currentTranslate;
+        setSliderPosition();
+    }
+    
+    // Reajustar en resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            setPositionByIndex();
+        }
+    });
+}
