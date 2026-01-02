@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Saira', Arial, sans-serif;
+    background: #fff;
+}
+
+/* HEADER */
+header {
+    background-color: #ed1d23;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.logo img {
+    height: 65px;
+}
+
+nav {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-icon {
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.nav-item:hover .tooltip {
+    opacity: 1;
+}
+
+/* MEGA MENU */
+.mega-menu {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: #ed1d23;
+    height: 65px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.nav-item:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mega-menu-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.mega-menu-title {
+    font-family: 'Bebas Neue', sans-serif;
+    color: white;
+}
+
+/* ACTIONS */
+.header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.theme-toggle,
+.user-toggle {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* FOOTER */
+.site-footer {
+    background-color: #ed1d23;
+    color: white;
+    padding: 25px 40px;
+    margin-top: 120px;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-center a,
+.footer-right a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+/* MOBILE */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background: white;
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+    .hamburger-menu {
+        display: flex;
+    }
+}
