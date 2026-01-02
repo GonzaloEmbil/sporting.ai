@@ -94,30 +94,85 @@
                     </div>
                 </div>
             </div>
-        </nav> 
+        </nav>
         
-        <!-- Botón de modo noche -->
-        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
-            <i class="fas fa-moon theme-icon"></i>
-        </button>
+        <!-- Botones de tema y usuario -->
+        <div class="header-actions">
+            <!-- Botón de modo noche -->
+            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+                <i class="fas fa-moon theme-icon"></i>
+            </button>
+            
+            <!-- Botón de usuario -->
+            <button id="user-toggle" class="user-toggle" aria-label="Cuenta de usuario">
+                <i class="fas fa-user user-icon"></i>
+            </button>
+        </div>
     </header>
 
-    <!-- LOGIN / REGISTRO -->
-    <div id="auth-box" style="max-width:300px;margin:100px auto 20px;">
-        <h3>Acceso usuarios</h3>
-
-      <input type="email" id="email" placeholder="Email" style="width:100%;margin-bottom:10px;">
-      <input type="password" id="password" placeholder="Contraseña" style="width:100%;margin-bottom:10px;">
-
-      <button id="register-btn">Registrarse</button>
-      <button id="login-btn">Iniciar sesión</button>
-
-      <p id="auth-message"></p>
+    <!-- Modal de autenticación -->
+    <div class="auth-modal-overlay" id="auth-modal-overlay">
+        <div class="auth-modal" id="auth-modal">
+            <button class="auth-modal-close" id="auth-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Vista de login/registro -->
+            <div class="auth-content" id="auth-login-view">
+                <h2 class="auth-title">Iniciar Sesión</h2>
+                
+                <!-- Botón de Google -->
+                <button class="auth-google-btn" id="google-login-btn">
+                    <i class="fab fa-google"></i>
+                    <span>Continuar con Google</span>
+                </button>
+                
+                <div class="auth-divider">
+                    <span>O</span>
+                </div>
+                
+                <!-- Formulario email/contraseña -->
+                <form class="auth-form" id="auth-form">
+                    <div class="auth-input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="auth-email" placeholder="Correo electrónico" required>
+                    </div>
+                    
+                    <div class="auth-input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="auth-password" placeholder="Contraseña" required>
+                    </div>
+                    
+                    <button type="submit" class="auth-submit-btn" id="login-submit-btn">
+                        Iniciar Sesión
+                    </button>
+                </form>
+                
+                <p class="auth-switch-text">
+                    ¿No tienes cuenta? 
+                    <a href="#" id="switch-to-register">Regístrate</a>
+                </p>
+                
+                <p class="auth-message" id="auth-message"></p>
+            </div>
+            
+            <!-- Vista de usuario logueado -->
+            <div class="auth-content auth-user-view" id="auth-user-view" style="display: none;">
+                <div class="auth-user-info">
+                    <div class="auth-user-avatar" id="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="auth-user-name" id="user-name">Usuario</h3>
+                    <p class="auth-user-email" id="user-email">email@example.com</p>
+                </div>
+                
+                <button class="auth-logout-btn" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </div>
     </div>
-
-    <button id="logout-btn" style="display:none; margin: 10px auto; display:block;">
-      Cerrar sesión
-    </button>
 
     <!-- Overlay y menú móvil -->
     <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
@@ -317,8 +372,8 @@
       const auth = firebase.auth();
     </script>
 
-<!-- TU JS PRINCIPAL -->
-<script src="script.js"></script>
+    <!-- TU JS PRINCIPAL -->
+    <script src="script.js"></script>
 
 </body>
 </html>
