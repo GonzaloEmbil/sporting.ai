@@ -612,14 +612,14 @@ body.dark-mode .auth-logout-btn:hover {
 .team-dropdown-container {
     position: absolute;
     top: 60px;
-    left: 80px;
+    left: 120px;
     z-index: 999;
     padding: 20px 0;
 }
 
 .team-dropdown {
     position: relative;
-    width: 200px;
+    width: 220px;
 }
 
 .dropdown-toggle {
