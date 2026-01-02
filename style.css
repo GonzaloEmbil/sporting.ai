@@ -771,8 +771,8 @@ body.dark-mode .dropdown-item.active span {
 .featured-article-container {
     position: absolute;
     right: 350px;
-    top: 140px;
-    width: 600px;
+    top: 145px;
+    width: 615px;
     z-index: 998;
 }
 
