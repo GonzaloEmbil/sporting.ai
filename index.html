@@ -102,6 +102,23 @@
         </button>
     </header>
 
+    <!-- LOGIN / REGISTRO -->
+    <div id="auth-box" style="max-width:300px;margin:100px auto 20px;">
+        <h3>Acceso usuarios</h3>
+
+      <input type="email" id="email" placeholder="Email" style="width:100%;margin-bottom:10px;">
+      <input type="password" id="password" placeholder="Contraseña" style="width:100%;margin-bottom:10px;">
+
+      <button id="register-btn">Registrarse</button>
+      <button id="login-btn">Iniciar sesión</button>
+
+      <p id="auth-message"></p>
+    </div>
+
+    <button id="logout-btn" style="display:none; margin: 10px auto; display:block;">
+      Cerrar sesión
+    </button>
+
     <!-- Overlay y menú móvil -->
     <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     <div class="mobile-nav" id="mobile-nav">
@@ -264,8 +281,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
-
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-content">
@@ -290,18 +305,20 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
     <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyCzJZrsd2WDfUl10Q7jRQfkyihmaJOWoZ8",
-      authDomain: "sportingcafe-a57bd.firebaseapp.com",
-      projectId: "sportingcafe-a57bd",
-      storageBucket: "sportingcafe-a57bd.firebasestorage.app",
-      messagingSenderId: "981878190630",
-      appId: "1:981878190630:web:5c17adb8a8828c5b076ce7"
-    };
+      firebase.initializeApp({
+        apiKey: "AIzaSyCzJZrsd2WDfUl10Q7jRQfkyihmaJOWoZ8",
+        authDomain: "sportingcafe-a57bd.firebaseapp.com",
+        projectId: "sportingcafe-a57bd",
+        storageBucket: "sportingcafe-a57bd.firebasestorage.app",
+        messagingSenderId: "981878190630",
+        appId: "1:981878190630:web:5c17adb8a8828c5b076ce7"
+      });
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+      const auth = firebase.auth();
     </script>
+
+<!-- TU JS PRINCIPAL -->
+<script src="script.js"></script>
+
 </body>
 </html>
