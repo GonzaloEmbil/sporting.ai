@@ -284,5 +284,24 @@
             </div>
         </div>
     </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+    <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCzJZrsd2WDfUl10Q7jRQfkyihmaJOWoZ8",
+      authDomain: "sportingcafe-a57bd.firebaseapp.com",
+      projectId: "sportingcafe-a57bd",
+      storageBucket: "sportingcafe-a57bd.firebasestorage.app",
+      messagingSenderId: "981878190630",
+      appId: "1:981878190630:web:5c17adb8a8828c5b076ce7"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    </script>
 </body>
 </html>
