@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporting Stats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/logofavicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="assets/logofavicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Saira:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- Menú hamburguesa -->
+        <div class="hamburger-menu" id="hamburger-menu">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>   
+        
+        <div class="logo">
+            <img src="assets/sportingcafe.png" alt="Logo Sporting Stats">
+        </div>
+        
+        <nav>
+            <div class="nav-item">
+                <i class="fas fa-chart-line nav-icon"></i>
+                <div class="tooltip">Artículos</div>
+                <div class="mega-menu">
+                    <div class="mega-menu-content">
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/4CAF50/ffffff?text=1" alt="Opción 1" class="mega-menu-icon">
+                            <span class="mega-menu-title">Sporting de Gijón</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/2196F3/ffffff?text=2" alt="Opción 2" class="mega-menu-icon">
+                            <span class="mega-menu-title">Sporting Atlético</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/FF9800/ffffff?text=3" alt="Opción 3" class="mega-menu-icon">
+                            <span class="mega-menu-title">Sporting Femenino</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/FF9800/ffffff?text=3" alt="Opción 3" class="mega-menu-icon">
+                            <span class="mega-menu-title">Mareo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-dollar-sign nav-icon"></i>
+                <div class="tooltip">Análisis de datos</div>
+                <div class="mega-menu">
+                    <div class="mega-menu-content">
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/673AB7/ffffff?text=$" alt="Bolsa" class="mega-menu-icon">
+                            <span class="mega-menu-title">Posición</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/009688/ffffff?text=C" alt="Cripto" class="mega-menu-icon">
+                            <span class="mega-menu-title">Puntos</span>
+                        </a>
+                            <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/009688/ffffff?text=C" alt="Cripto" class="mega-menu-icon">
+                            <span class="mega-menu-title">Goles</span>
+                        </a>
+                            <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/009688/ffffff?text=C" alt="Cripto" class="mega-menu-icon">
+                            <span class="mega-menu-title">El Molinón</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/009688/ffffff?text=C" alt="Cripto" class="mega-menu-icon">
+                            <span class="mega-menu-title">Abonados</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/009688/ffffff?text=C" alt="Cripto" class="mega-menu-icon">
+                            <span class="mega-menu-title">Límite Salarial</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/009688/ffffff?text=C" alt="Cripto" class="mega-menu-icon">
+                            <span class="mega-menu-title">Traspasos</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-gamepad nav-icon"></i>
+                <div class="tooltip">Juegos</div>
+                <div class="mega-menu">
+                    <div class="mega-menu-content">
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/E91E63/ffffff?text=G" alt="Juego 1" class="mega-menu-icon">
+                            <span class="mega-menu-title">Lineup</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/00BCD4/ffffff?text=G" alt="Juego 2" class="mega-menu-icon">
+                            <span class="mega-menu-title">Quiz</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/00BCD4/ffffff?text=G" alt="Juego 2" class="mega-menu-icon">
+                            <span class="mega-menu-title">Porra</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-user nav-icon"></i>
+                <div class="tooltip">Info</div>
+                <div class="mega-menu">
+                    <div class="mega-menu-content">
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/FF5722/ffffff?text=?" alt="FAQ" class="mega-menu-icon">
+                            <span class="mega-menu-title">Preguntas frecuentes</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/3F51B5/ffffff?text=i" alt="About" class="mega-menu-icon">
+                            <span class="mega-menu-title">Contacto</span>
+                        </a>
+                        <a href="#" class="mega-menu-item">
+                            <img src="https://via.placeholder.com/40/3F51B5/ffffff?text=i" alt="About" class="mega-menu-icon">
+                            <span class="mega-menu-title">Donaciones</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Botones de tema y usuario -->
+        <div class="header-actions">
+            <!-- Botón de modo noche -->
+            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+                <i class="fas fa-moon theme-icon"></i>
+            </button>
+            
+            <!-- Botón de usuario -->
+            <button id="user-toggle" class="user-toggle" aria-label="Cuenta de usuario">
+                <i class="fas fa-user user-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Modal de autenticación -->
+    <div class="auth-modal-overlay" id="auth-modal-overlay">
+        <div class="auth-modal" id="auth-modal">
+            <button class="auth-modal-close" id="auth-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Vista de login/registro -->
+            <div class="auth-content" id="auth-login-view">
+                <h2 class="auth-title">Iniciar Sesión</h2>
+                
+                <!-- Botón de Google -->
+                <button class="auth-google-btn" id="google-login-btn">
+                    <i class="fab fa-google"></i>
+                    <span>Continuar con Google</span>
+                </button>
+                
+                <div class="auth-divider">
+                    <span>O</span>
+                </div>
+                
+                <!-- Formulario email/contraseña -->
+                <form class="auth-form" id="auth-form">
+                    <div class="auth-input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="auth-email" placeholder="Correo electrónico" required>
+                    </div>
+                    
+                    <div class="auth-input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="auth-password" placeholder="Contraseña" required>
+                    </div>
+                    
+                    <button type="submit" class="auth-submit-btn" id="login-submit-btn">
+                        Iniciar Sesión
+                    </button>
+                </form>
+                
+                <p class="auth-switch-text">
+                    ¿No tienes cuenta? 
+                    <a href="#" id="switch-to-register">Regístrate</a>
+                </p>
+                
+                <p class="auth-message" id="auth-message"></p>
+            </div>
+            
+            <!-- Vista de usuario logueado -->
+            <div class="auth-content auth-user-view" id="auth-user-view" style="display: none;">
+                <div class="auth-user-info">
+                    <div class="auth-user-avatar" id="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="auth-user-name" id="user-name">Usuario</h3>
+                    <p class="auth-user-email" id="user-email">email@example.com</p>
+                </div>
+                
+                <button class="auth-logout-btn" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay y menú móvil -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-item">
+            <div class="mobile-nav-title">
+                <i class="fas fa-chart-line"></i>
+                <span>Artículos</span>
+            </div>
+            <div class="mobile-submenu">
+                <a href="#" class="mobile-submenu-item">
+                    <img src="https://via.placeholder.com/30/4CAF50/ffffff?text=1" alt="LaLiga" class="mobile-submenu-icon">
+                    <span>LaLiga</span>
+                </a>
+                <a href="#" class="mobile-submenu-item">
+                    <img src="https://via.placeholder.com/30/2196F3/ffffff?text=2" alt="Premier" class="mobile-submenu-icon">
+                    <span>Premier League</span>
+                </a>
+                <a href="#" class="mobile-submenu-item">
+                    <img src="https://via.placeholder.com/30/FF9800/ffffff?text=3" alt="Serie A" class="mobile-submenu-icon">
+                    <span>Serie A</span>
+                </a>
+            </div>
+        </div>
+    
+        <div class="mobile-nav-item">
+            <div class="mobile-nav-title">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Análisis de datos</span>
+            </div>
+            <div class="mobile-submenu">
+                <a href="#" class="mobile-submenu-item">
+                    <img src="https://via.placeholder.com/30/673AB7/ffffff?text=$" alt="Mercados" class="mobile-submenu-icon">
+                    <span>Mercados</span>
+                </a>
+                <a href="#" class="mobile-submenu-item">
+                    <img src="https://via.placeholder.com/30/009688/ffffff?text=C" alt="Cripto" class="mobile-submenu-icon">
+                    <span>Criptomonedas</span>
+                </a>
+            </div>
+        </div>
+    
+        <div class="mobile-nav-item">
+            <div class="mobile-nav-title">
+                <i class="fas fa-gamepad"></i>
+                <span>Juegos</span>
+            </div>
+            <div class="mobile-submenu">
+                <a href="#" class="mobile-submenu-item">
+                    <img src="https://via.placeholder.com/30/E91E63/ffffff?text=G" alt="Juego 1" class="mobile-submenu-icon">
+                    <span>Juego 1</span>
+                </a>
+                <a href="#" class="mobile-submenu-item">
+                    <img src="https://via.placeholder.com/30/00BCD4/ffffff?text=G" alt="Juego 2" class="mobile-submenu-icon">
+                    <span>Juego 2</span>
+                </a>
+            </div>
+        </div>
+    
+        <div class="mobile-nav-item">
+            <div class="mobile-nav-title">
+                <i class="fas fa-user"></i>
+                <span>FAQs</span>
+            </div>
+            <div class="mobile-submenu">
+                <a href="#" class="mobile-submenu-item">
+                    <img src="https://via.placeholder.com/30/FF5722/ffffff?text=?" alt="FAQ" class="mobile-submenu-icon">
+                    <span>FAQs</span>
+                </a>
+                <a href="#" class="mobile-submenu-item">
+                    <img src="https://via.placeholder.com/30/3F51B5/ffffff?text=i" alt="About" class="mobile-submenu-icon">
+                    <span>Sobre mí</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menú desplegable de equipos -->
+    <div class="team-dropdown-container">
+        <div class="team-dropdown">
+            <button class="dropdown-toggle" id="dropdown-toggle">
+                <span class="dropdown-text" id="dropdown-text">Sporting de Gijón</span>
+                <i class="fas fa-chevron-down dropdown-icon"></i>
+            </button>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <div class="dropdown-item active" data-team="real-sporting">
+                    <span>Sporting de Gijón</span>
+                </div>
+                <div class="dropdown-item" data-team="sporting-atletico">
+                    <span>Sporting Atlético</span>
+                </div>
+                <div class="dropdown-item" data-team="sporting-femenino">
+                    <span>Sporting Femenino</span>
+                </div>
+                <div class="dropdown-item" data-team="juvenil-a">
+                    <span>Juvenil A</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Artículo destacado FUERA del contenedor de iframes -->
+    <div class="featured-article-container">
+        <a href="#" class="featured-article-card">
+            <div class="article-image">
+                <img src="https://via.placeholder.com/400x250/D50032/ffffff?text=Artículo+Destacado" alt="Artículo destacado">
+                <div class="article-badge">DESTACADO</div>
+            </div>
+            <div class="article-content">
+                <h3 class="article-title">El Sporting continúa su racha invicta en El Molinón</h3>
+                <p class="article-excerpt">El equipo rojiblanco sumó tres puntos más en casa ante un rival directo en la lucha por el ascenso. Gran actuación del equipo que mantiene vivas las opciones de playoff...</p>
+                <div class="article-footer">
+                    <span class="article-date">26 Dic 2024</span>
+                    <span class="article-read-more">Leer más →</span>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Título Calendario -->
+    <div class="calendar-title-container">
+        <h2 class="calendar-title">Calendario</h2>
+    </div>
+
+    <!-- Carrusel de próximos partidos -->
+    <div class="calendar-carousel-container">
+        <button class="carousel-arrow carousel-arrow-left" id="carousel-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="calendar-carousel">
+            <div class="carousel-track" id="carousel-track">
+                <!-- Los partidos se generarán aquí dinámicamente -->
+            </div>
+        </div>
+        <button class="carousel-arrow carousel-arrow-right" id="carousel-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <div class="content">
+        <div class="standings-container">
+            <!-- Real Sporting de Gijón -->
+            <div id="iframe-real-sporting" class="iframe-wrapper active">
+                <iframe id="sofa-standings-embed-37-77558" src="https://widgets.sofascore.com/es-ES/embed/tournament/37/season/77558/standings/LaLiga%202%2025%2F26?widgetTitle=LaLiga%202%2025%2F26&showCompetitionLogo=true&showForm=true&showGoals=true&showGoalDifference=true" style="height:1200px!important;max-width:500px!important;width:100%!important;" frameborder="0" scrolling="no"></iframe>
+            </div>
+
+            <!-- Sporting Atlético -->
+            <div id="iframe-sporting-atletico" class="iframe-wrapper">
+                <iframe id="sofa-standings-embed-40351-81098" src="https://widgets.sofascore.com/es-ES/embed/tournament/40351/season/81098/standings/Tercera%20Federacion%2025%2F26%2C%20Group%202?widgetTitle=Tercera%20Federacion%2025%2F26%2C%20Group%202&showCompetitionLogo=true&showForm=true&showGoals=true&showGoalDifference=true" style="height:1050px!important;max-width:500px!important;width:100%!important;" frameborder="0" scrolling="no"></iframe>
+            </div>
+
+            <!-- Sporting Femenino -->
+            <div id="iframe-sporting-femenino" class="iframe-wrapper">
+                <iframe id="sofa-standings-embed-138864-80367" src="https://widgets.sofascore.com/es-ES/embed/tournament/138864/season/80367/standings/Segunda%20Federaci%C3%B3n%20Femenina%2C%20Group%201%2025%2F26?widgetTitle=Segunda%20Federaci%C3%B3n%20Femenina%2C%20Group%201%2025%2F26&showCompetitionLogo=true&showForm=true&showGoals=true&showGoalDifference=true" style="height:900px!important;max-width:500px!important;width:100%!important;" frameborder="0" scrolling="no"></iframe>
+            </div>
+
+            <!-- Juvenil A -->
+            <div id="iframe-juvenil-a" class="iframe-wrapper">
+                <iframe id="sofa-standings-embed-40351-81098-juvenil" src="https://widgets.sofascore.com/es-ES/embed/tournament/42912/season/80633/standings/Group%201?widgetTitle=Group%201&showCompetitionLogo=true" style="height:975px!important;max-width:500px!important;width:100%!important;" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                © 2025 Sporting Stats
+            </div>
+            <div class="footer-center">
+                <a href="#">Aviso legal</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="footer-right">
+                <a href="#" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+    <script>
+      firebase.initializeApp({
+        apiKey: "AIzaSyCzJZrsd2WDfUl10Q7jRQfkyihmaJOWoZ8",
+        authDomain: "sportingcafe-a57bd.firebaseapp.com",
+        projectId: "sportingcafe-a57bd",
+        storageBucket: "sportingcafe-a57bd.firebasestorage.app",
+        messagingSenderId: "981878190630",
+        appId: "1:981878190630:web:5c17adb8a8828c5b076ce7"
+      });
+
+      const auth = firebase.auth();
+    </script>
+
+    <!-- TU JS PRINCIPAL -->
+    <script src="script.js"></script>
+
+</body>
+</html>
