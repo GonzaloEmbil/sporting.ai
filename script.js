@@ -335,3 +335,57 @@ if (window.innerWidth <= 768) {
         }
     }, true);
 }
+
+
+// FIREBASE
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const registerBtn = document.getElementById("register-btn");
+const loginBtn = document.getElementById("login-btn");
+const logoutBtn = document.getElementById("logout-btn");
+const authMessage = document.getElementById("auth-message");
+
+// REGISTRO
+registerBtn.addEventListener("click", () => {
+  auth.createUserWithEmailAndPassword(
+    emailInput.value,
+    passwordInput.value
+  )
+  .then(() => {
+    authMessage.textContent = "Usuario registrado correctamente";
+  })
+  .catch(error => {
+    authMessage.textContent = error.message;
+  });
+});
+
+// LOGIN
+loginBtn.addEventListener("click", () => {
+  auth.signInWithEmailAndPassword(
+    emailInput.value,
+    passwordInput.value
+  )
+  .then(() => {
+    authMessage.textContent = "Sesión iniciada";
+  })
+  .catch(error => {
+    authMessage.textContent = error.message;
+  });
+});
+
+// LOGOUT
+logoutBtn.addEventListener("click", () => {
+  auth.signOut();
+});
+
+// SABER SI HAY USUARIO LOGUEADO
+auth.onAuthStateChanged(user => {
+  if (user) {
+    document.getElementById("auth-box").style.display = "none";
+    logoutBtn.style.display = "block";
+    console.log("Usuario logueado:", user.email);
+  } else {
+    document.getElementById("auth-box").style.display = "block";
+    logoutBtn.style.display = "none";
+  }
+});
