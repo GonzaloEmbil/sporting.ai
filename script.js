@@ -336,56 +336,257 @@ if (window.innerWidth <= 768) {
     }, true);
 }
 
+// ==========================================
+// SISTEMA DE AUTENTICACIÓN CON FIREBASE
+// ==========================================
 
-// FIREBASE
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const registerBtn = document.getElementById("register-btn");
-const loginBtn = document.getElementById("login-btn");
-const logoutBtn = document.getElementById("logout-btn");
-const authMessage = document.getElementById("auth-message");
+// Referencias al modal y elementos
+const userToggle = document.getElementById('user-toggle');
+const authModalOverlay = document.getElementById('auth-modal-overlay');
+const authModal = document.getElementById('auth-modal');
+const authModalClose = document.getElementById('auth-modal-close');
+const authLoginView = document.getElementById('auth-login-view');
+const authUserView = document.getElementById('auth-user-view');
 
-// REGISTRO
-registerBtn.addEventListener("click", () => {
-  auth.createUserWithEmailAndPassword(
-    emailInput.value,
-    passwordInput.value
-  )
-  .then(() => {
-    authMessage.textContent = "Usuario registrado correctamente";
-  })
-  .catch(error => {
-    authMessage.textContent = error.message;
-  });
+// Referencias a elementos del formulario
+const authForm = document.getElementById('auth-form');
+const authEmail = document.getElementById('auth-email');
+const authPassword = document.getElementById('auth-password');
+const loginSubmitBtn = document.getElementById('login-submit-btn');
+const googleLoginBtn = document.getElementById('google-login-btn');
+const switchToRegister = document.getElementById('switch-to-register');
+const authMessage = document.getElementById('auth-message');
+
+// Referencias a elementos de usuario logueado
+const userName = document.getElementById('user-name');
+const userEmail = document.getElementById('user-email');
+const userAvatar = document.getElementById('user-avatar');
+const logoutBtn = document.getElementById('logout-btn');
+
+// Variable para saber si estamos en modo registro o login
+let isRegisterMode = false;
+
+// Abrir modal de autenticación
+userToggle.addEventListener('click', () => {
+    authModalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
 });
 
-// LOGIN
-loginBtn.addEventListener("click", () => {
-  auth.signInWithEmailAndPassword(
-    emailInput.value,
-    passwordInput.value
-  )
-  .then(() => {
-    authMessage.textContent = "Sesión iniciada";
-  })
-  .catch(error => {
-    authMessage.textContent = error.message;
-  });
+// Cerrar modal con el botón X
+authModalClose.addEventListener('click', closeAuthModal);
+
+// Cerrar modal al hacer clic en el overlay
+authModalOverlay.addEventListener('click', (e) => {
+    if (e.target === authModalOverlay) {
+        closeAuthModal();
+    }
 });
 
-// LOGOUT
-logoutBtn.addEventListener("click", () => {
-  auth.signOut();
+// Función para cerrar el modal
+function closeAuthModal() {
+    authModalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    clearAuthMessage();
+}
+
+// Cambiar entre modo login y registro
+switchToRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    isRegisterMode = !isRegisterMode;
+    
+    if (isRegisterMode) {
+        loginSubmitBtn.textContent = 'Registrarse';
+        switchToRegister.textContent = 'Iniciar Sesión';
+        document.querySelector('.auth-title').textContent = 'Crear Cuenta';
+        document.querySelector('.auth-switch-text').innerHTML = '¿Ya tienes cuenta? <a href="#" id="switch-to-register">Inicia sesión</a>';
+    } else {
+        loginSubmitBtn.textContent = 'Iniciar Sesión';
+        switchToRegister.textContent = 'Regístrate';
+        document.querySelector('.auth-title').textContent = 'Iniciar Sesión';
+        document.querySelector('.auth-switch-text').innerHTML = '¿No tienes cuenta? <a href="#" id="switch-to-register">Regístrate</a>';
+    }
+    
+    // Reasignar el event listener al nuevo enlace
+    document.getElementById('switch-to-register').addEventListener('click', arguments.callee);
+    clearAuthMessage();
 });
 
-// SABER SI HAY USUARIO LOGUEADO
-auth.onAuthStateChanged(user => {
-  if (user) {
-    document.getElementById("auth-box").style.display = "none";
-    logoutBtn.style.display = "block";
-    console.log("Usuario logueado:", user.email);
-  } else {
-    document.getElementById("auth-box").style.display = "block";
-    logoutBtn.style.display = "none";
-  }
+// Función para mostrar mensajes
+function showAuthMessage(message, type = 'error') {
+    authMessage.textContent = message;
+    authMessage.className = `auth-message ${type}`;
+}
+
+// Función para limpiar mensajes
+function clearAuthMessage() {
+    authMessage.textContent = '';
+    authMessage.className = 'auth-message';
+}
+
+// Login/Registro con email y contraseña
+authForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearAuthMessage();
+    
+    const email = authEmail.value.trim();
+    const password = authPassword.value;
+    
+    // Validaciones básicas
+    if (!email || !password) {
+        showAuthMessage('Por favor, completa todos los campos', 'error');
+        return;
+    }
+    
+    if (password.length < 6) {
+        showAuthMessage('La contraseña debe tener al menos 6 caracteres', 'error');
+        return;
+    }
+    
+    try {
+        loginSubmitBtn.disabled = true;
+        loginSubmitBtn.textContent = isRegisterMode ? 'Registrando...' : 'Iniciando...';
+        
+        if (isRegisterMode) {
+            // Registro
+            await auth.createUserWithEmailAndPassword(email, password);
+            showAuthMessage('¡Cuenta creada exitosamente!', 'success');
+        } else {
+            // Login
+            await auth.signInWithEmailAndPassword(email, password);
+            showAuthMessage('¡Sesión iniciada correctamente!', 'success');
+        }
+        
+        // Limpiar formulario
+        authEmail.value = '';
+        authPassword.value = '';
+        
+        // Cerrar modal después de un breve delay
+        setTimeout(() => {
+            closeAuthModal();
+        }, 1000);
+        
+    } catch (error) {
+        console.error('Error de autenticación:', error);
+        
+        // Mensajes de error personalizados
+        let errorMessage = 'Ha ocurrido un error. Inténtalo de nuevo.';
+        
+        switch (error.code) {
+            case 'auth/email-already-in-use':
+                errorMessage = 'Este email ya está registrado';
+                break;
+            case 'auth/invalid-email':
+                errorMessage = 'Email inválido';
+                break;
+            case 'auth/weak-password':
+                errorMessage = 'La contraseña es demasiado débil';
+                break;
+            case 'auth/user-not-found':
+                errorMessage = 'Usuario no encontrado';
+                break;
+            case 'auth/wrong-password':
+                errorMessage = 'Contraseña incorrecta';
+                break;
+            case 'auth/too-many-requests':
+                errorMessage = 'Demasiados intentos. Intenta más tarde';
+                break;
+        }
+        
+        showAuthMessage(errorMessage, 'error');
+    } finally {
+        loginSubmitBtn.disabled = false;
+        loginSubmitBtn.textContent = isRegisterMode ? 'Registrarse' : 'Iniciar Sesión';
+    }
+});
+
+// Login con Google
+googleLoginBtn.addEventListener('click', async () => {
+    clearAuthMessage();
+    
+    try {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        provider.setCustomParameters({
+            prompt: 'select_account'
+        });
+        
+        await auth.signInWithPopup(provider);
+        showAuthMessage('¡Sesión iniciada con Google!', 'success');
+        
+        setTimeout(() => {
+            closeAuthModal();
+        }, 1000);
+        
+    } catch (error) {
+        console.error('Error con Google Sign In:', error);
+        
+        let errorMessage = 'Error al iniciar sesión con Google';
+        
+        if (error.code === 'auth/popup-closed-by-user') {
+            errorMessage = 'Inicio de sesión cancelado';
+        } else if (error.code === 'auth/popup-blocked') {
+            errorMessage = 'Ventana emergente bloqueada. Permite las ventanas emergentes.';
+        }
+        
+        showAuthMessage(errorMessage, 'error');
+    }
+});
+
+// Cerrar sesión
+logoutBtn.addEventListener('click', async () => {
+    try {
+        await auth.signOut();
+        closeAuthModal();
+    } catch (error) {
+        console.error('Error al cerrar sesión:', error);
+    }
+});
+
+// Observador del estado de autenticación
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        // Usuario logueado
+        console.log('Usuario logueado:', user.email);
+        
+        // Actualizar UI del botón de usuario
+        userToggle.classList.add('logged-in');
+        
+        // Mostrar vista de usuario en el modal
+        authLoginView.style.display = 'none';
+        authUserView.style.display = 'block';
+        
+        // Actualizar información del usuario
+        userName.textContent = user.displayName || 'Usuario';
+        userEmail.textContent = user.email;
+        
+        // Si tiene foto de perfil
+        if (user.photoURL) {
+            userAvatar.innerHTML = `<img src="${user.photoURL}" alt="Avatar">`;
+        } else {
+            // Usar inicial del email
+            const initial = user.email.charAt(0).toUpperCase();
+            userAvatar.innerHTML = `<span style="font-size: 36px;">${initial}</span>`;
+        }
+        
+    } else {
+        // Usuario no logueado
+        console.log('Usuario no logueado');
+        
+        // Actualizar UI del botón de usuario
+        userToggle.classList.remove('logged-in');
+        
+        // Mostrar vista de login en el modal
+        authLoginView.style.display = 'block';
+        authUserView.style.display = 'none';
+        
+        // Reset a modo login
+        isRegisterMode = false;
+        loginSubmitBtn.textContent = 'Iniciar Sesión';
+        document.querySelector('.auth-title').textContent = 'Iniciar Sesión';
+        document.querySelector('.auth-switch-text').innerHTML = '¿No tienes cuenta? <a href="#" id="switch-to-register">Regístrate</a>';
+        
+        // Limpiar formulario
+        authEmail.value = '';
+        authPassword.value = '';
+        clearAuthMessage();
+    }
 });
