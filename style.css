@@ -770,7 +770,7 @@ body.dark-mode .dropdown-item.active span {
 /* Artículo destacado */
 .featured-article-container {
     position: absolute;
-    right: 350px;
+    right: 150px;
     top: 145px;
     width: 750px;
     z-index: 998;
