@@ -1378,3 +1378,14 @@ body.dark-mode .match-card:hover {
         display: none; /* Chrome/Safari */
     }
 }
+
+ /* Posición del artículo destacado para móviles*/   
+@media (max-width: 768px) {
+    .featured-article-container {
+        position: static;
+        margin-top: 85px;
+        margin-bottom: 30px;
+        padding: 0 15px;
+        max-width: 100%;
+    }
+}
