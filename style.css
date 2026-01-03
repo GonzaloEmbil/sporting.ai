@@ -1333,7 +1333,7 @@ body.dark-mode .match-card:hover {
     .calendar-carousel-container {
         position: static;
         width: 100%;
-        margin: 20px auto;
+        margin: 80px auto 20px;
         padding: 0 10px;
         gap: 0;
     }
