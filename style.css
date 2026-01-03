@@ -1182,7 +1182,7 @@ body.dark-mode .dropdown-item.active span {
     }
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1200px) {
     .featured-article-container {
         position: static;
         width: 100%;
@@ -1217,7 +1217,7 @@ body.dark-mode .dropdown-item.active span {
     }
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1200px) {
     .calendar-title-container {
         position: static;
         width: 100%;
@@ -1326,7 +1326,7 @@ body.dark-mode .dropdown-item.active span {
     }
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1200px) {
     .calendar-carousel-container {
         position: static;
         width: 100%;
