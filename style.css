@@ -25,301 +25,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.footer-left {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.footer-center {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-center a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    opacity: 0.85;
-    transition: opacity 0.2s;
-}
-
-.footer-center a:hover {
-    opacity: 1;
-    text-decoration: underline;
-}
-
-.footer-right {
-    display: flex;
-    gap: 15px;
-}
-
-.footer-right a {
-    color: white;
-    font-size: 18px;
-    transition: transform 0.2s, opacity 0.2s;
-}
-
-.footer-right a:hover {
-    transform: scale(1.2);
-    opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-center {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-}
-
-/* Menú hamburguesa para móvil */
-.hamburger-menu {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 8px;
-    z-index: 1002;
-}
-
-.hamburger-line {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-.hamburger-menu.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translateY(8px);
-}
-
-.hamburger-menu.active .hamburger-line:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-menu.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translateY(-8px);
-}
-
-/* Menú móvil overlay */
-.mobile-nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1001;
-}
-
-.mobile-nav-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.mobile-nav {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 280px;
-    height: 100vh;
-    background: #ed1d23;
-    transition: left 0.3s ease;
-    z-index: 1002;
-    overflow-y: auto;
-    padding: 80px 0 20px 0;
-}
-
-.mobile-nav.active {
-    left: 0;
-}
-
-.mobile-nav-item {
-    padding: 20px 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.mobile-nav-item:hover {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.mobile-nav-title {
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.mobile-nav-title i {
-    font-size: 20px;
-}
-
-.mobile-submenu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.mobile-nav-item.active .mobile-submenu {
-    max-height: 500px;
-}
-
-.mobile-submenu-item {
-    padding: 15px 30px 15px 50px;
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: background 0.2s ease;
-}
-
-.mobile-submenu-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.mobile-submenu-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
-}
-
-/* Responsive para móvil - SOLO afecta en pantallas pequeñas */
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: flex;
-    }
-    
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .logo {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .logo img {
-        height: 55px;
-    }
-    
-    /* Ocultar navegación desktop en móvil */
-    header > nav {
-        display: none !important;
-    }
-    
-    .header-actions {
-        gap: 10px;
-    }
-    
-    .theme-toggle,
-    .user-toggle {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
-    
-    /* Modal responsive */
-    .auth-modal {
-        width: 95%;
-        padding: 30px 25px;
-    }
-    
-    .auth-title {
-        font-size: 24px;
-        margin-bottom: 25px;
-    }
-    
-    /* Artículo destacado - primer elemento después del header */
-    .featured-article-container {
-        position: static;
-        width: 100%;
-        max-width: 500px;
-        margin: 95px auto 0;
-        padding: 0 20px;
-    }
-    
-    /* Título Calendario */
-    .calendar-title-container {
-        position: static;
-        width: 100%;
-        max-width: 500px;
-        margin: 95px auto 0;
-        padding: 0 20px;
-    }
-}
-
-/* Carrusel responsive para móvil */
-@media (max-width: 768px) {
-    .calendar-carousel-container {
-        position: static;
-        width: 100%;
-        margin: 95px auto 20px;
-        padding: 0 10px;
-        gap: 0;
-    }
-    
-    /* Ocultar flechas en móvil */
-    .carousel-arrow {
-        display: none;
-    }
-    
-    .calendar-carousel {
-        width: 100%;
-        touch-action: pan-y;
-        cursor: grab;
-    }
-    
-    .calendar-carousel:active {
-        cursor: grabbing;
-    }
-    
-    .carousel-track {
-        gap: 15px;
-        padding: 0 10px;
-    }
-    
-    /* Tarjetas más grandes en móvil - mostrar 1.5 tarjetas */
-    .match-card {
-        min-width: calc(70vw - 20px);
-        flex-shrink: 0;
-    }
-    
-    /* Scroll suave en móvil */
-    .calendar-carousel {
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
-    }
-    
-    .calendar-carousel::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
-    }
-}padding: 0 40px;
+    padding: 0 40px;
     position: fixed;
     top: 0;
     left: 0;
@@ -1040,8 +746,6 @@ body.dark-mode .dropdown-item.active span {
     .team-dropdown-container {
         left: 50%;
         transform: translateX(-50%);
-        top: 430px;
-        margin-top: 0;
     }
     
     .team-dropdown {
@@ -1182,7 +886,7 @@ body.dark-mode .dropdown-item.active span {
     }
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
     .featured-article-container {
         position: static;
         width: 100%;
@@ -1217,7 +921,7 @@ body.dark-mode .dropdown-item.active span {
     }
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
     .calendar-title-container {
         position: static;
         width: 100%;
@@ -1326,7 +1030,7 @@ body.dark-mode .dropdown-item.active span {
     }
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
     .calendar-carousel-container {
         position: static;
         width: 100%;
@@ -1397,3 +1101,280 @@ body.dark-mode .match-card:hover {
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-left {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.footer-center {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-center a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+
+.footer-center a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.footer-right {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-right a {
+    color: white;
+    font-size: 18px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.footer-right a:hover {
+    transform: scale(1.2);
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-center {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* Menú hamburguesa para móvil */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1002;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Menú móvil overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100vh;
+    background: #ed1d23;
+    transition: left 0.3s ease;
+    z-index: 1002;
+    overflow-y: auto;
+    padding: 80px 0 20px 0;
+}
+
+.mobile-nav.active {
+    left: 0;
+}
+
+.mobile-nav-item {
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.mobile-nav-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-title {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-nav-title i {
+    font-size: 20px;
+}
+
+.mobile-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav-item.active .mobile-submenu {
+    max-height: 500px;
+}
+
+.mobile-submenu-item {
+    padding: 15px 30px 15px 50px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s ease;
+}
+
+.mobile-submenu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-submenu-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+}
+
+/* Responsive para móvil - SOLO afecta en pantallas pequeñas */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .logo img {
+        height: 55px;
+    }
+    
+    /* Ocultar navegación desktop en móvil */
+    header > nav {
+        display: none !important;
+    }
+    
+    .header-actions {
+        gap: 10px;
+    }
+    
+    .theme-toggle,
+    .user-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    /* Modal responsive */
+    .auth-modal {
+        width: 95%;
+        padding: 30px 25px;
+    }
+    
+    .auth-title {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+}
+
+/* Carrusel responsive para móvil */
+@media (max-width: 768px) {
+    .calendar-carousel-container {
+        position: static;
+        width: 100%;
+        margin: 40px auto 20px;
+        padding: 0 10px;
+        gap: 0;
+    }
+    
+    /* Ocultar flechas en móvil */
+    .carousel-arrow {
+        display: none;
+    }
+    
+    .calendar-carousel {
+        width: 100%;
+        touch-action: pan-y;
+        cursor: grab;
+    }
+    
+    .calendar-carousel:active {
+        cursor: grabbing;
+    }
+    
+    .carousel-track {
+        gap: 15px;
+        padding: 0 10px;
+    }
+    
+    /* Tarjetas más grandes en móvil - mostrar 1.5 tarjetas */
+    .match-card {
+        min-width: calc(70vw - 20px);
+        flex-shrink: 0;
+    }
+    
+    /* Scroll suave en móvil */
+    .calendar-carousel {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+    
+    .calendar-carousel::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+}
