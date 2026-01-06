@@ -1389,3 +1389,14 @@ body.dark-mode .match-card:hover {
         max-width: 100%;
     }
 }
+
+ /* Posición del menú desplegable de equipos para móviles*/   
+@media (max-width: 768px) {
+    .team-dropdown-container {
+        position: static;
+        margin-top: 85px;
+        margin-bottom: 30px;
+        padding: 0 15px;
+        transform: none;
+    }
+}
