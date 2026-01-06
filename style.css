@@ -1400,3 +1400,10 @@ body.dark-mode .match-card:hover {
         transform: none;
     }
 }
+
+@media (max-width: 768px) {
+    .content {
+        margin-top: 0;
+    }
+}
+
